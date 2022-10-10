@@ -32,7 +32,7 @@ async function fetchData() {
     console.log(item.name);
     // crear image
     const image = document.createElement('img')
-    image.className = 'h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6'
+    image.className = 'h-36 w-36 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6'
     image.src = `${baseUrl}${item.image}`
     // crear titulo
     const title = document.createElement('h2')
@@ -49,7 +49,7 @@ async function fetchData() {
     titleAndPrice.append(title, price)
 
     const container = document.createElement('div')
-    container.className = 'md:flex cursor-pointer p-6 rounded-lg hover:bg-gray-300'
+    container.className = 'md:flex cursor-pointer p-6 rounded-lg bg-gray-900 hover:bg-gray-400'
     container.append(image, titleAndPrice)
 
     allItems.push(container)
