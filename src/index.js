@@ -3,6 +3,18 @@ const baseUrl = 'https://platzi-avo.vercel.app';
 const url = `${baseUrl}/api/avo`;
 const appNode = document.querySelector('#app')
 
+// Intl
+// 1 - format fechas
+// 2 - format monedas
+const formatPrice = (price) => {
+  const newPrice = new window.Intl.NumberFormat('en-EN', {
+    style: 'currency',
+    currency: 'USD'
+  }).format(price)
+
+  return newPrice
+}
+
 // web api
 // Conectarnos al server
 // procesar la respuesta y convertirla en JSON
@@ -20,16 +32,25 @@ async function fetchData() {
     console.log(item.name);
     // crear image
     const image = document.createElement('img')
+    image.className = 'h-16 w-16 md:h-24 md:w-24 rounded-full mx-auto md:mx-0 md:mr-6'
     image.src = `${baseUrl}${item.image}`
     // crear titulo
     const title = document.createElement('h2')
     title.textContent = `${item.name}`
+    title.className = 'text-2xl'
+
     // crear precio
     const price = document.createElement('div')
-    price.textContent = `$${item.price}`
+    price.className = 'text-xl text-gray-600'
+    price.textContent = formatPrice(item.price)
+
+    // Wrap
+    const titleAndPrice = document.createElement('div')
+    titleAndPrice.append(title, price)
 
     const container = document.createElement('div')
-    container.append(image, title, price)
+    container.className = 'md:flex cursor-pointer p-6 rounded-lg hover:bg-gray-300'
+    container.append(image, titleAndPrice)
 
     allItems.push(container)
   })
