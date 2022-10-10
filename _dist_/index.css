@@ -1,0 +1,11 @@
+@import "../_snowpack/pkg/tailwindcss/dist/base.css";
+@import "../_snowpack/pkg/tailwindcss/dist/components.css";
+@import "../_snowpack/pkg/tailwindcss/dist/utilities.css";
+
+h2.title {
+  font-size: 3rem;
+}
+
+body {
+  background-color: black;
+}
